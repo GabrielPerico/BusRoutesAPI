@@ -16,9 +16,11 @@ class Noticias_model extends CI_Model{
         return $query->row(); 
     }
     
-    public function getAllNoticias()
+    public function getAllNoticias($limit)
     {   
-        
+        if($limit > 0){
+            $this->db->limit($limit);
+        }
         $this->db->select('noticias.*,usuario.nome');
         $this->db->join('usuario', 'usuario.id = id_usuario', 'inner');
         $query = $this->db->get('noticias');

@@ -27,7 +27,7 @@ class Usuario extends CI_Controller    {
 
             $email = $post->email;
             $senha = sha1(md5($post->senha.'P0U2U4R1o3D1f3r3NT'));
-    
+            
             $retorno = $this->Usuario_model->getUsuario($email,$senha);
 
             header('Content-Type: application/json; charset=utf-8', true,200);

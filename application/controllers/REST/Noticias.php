@@ -84,9 +84,14 @@ class Noticias extends Rest_Controller    {
     }
 
     public function index_get(){
+        if ($this->get('id')) {
+            $limit = $this->get('id');
+        }else{
+            $limit = 0;
+        }
         $this->load->model('Noticias_model');   
 
-        $retorno = $this->Noticias_model->getAllNoticias();
+        $retorno = $this->Noticias_model->getAllNoticias($limit);
         
         $this->set_response($retorno, REST_Controller_Definitions::HTTP_OK);
         return;
