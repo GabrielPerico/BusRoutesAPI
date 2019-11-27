@@ -30,10 +30,12 @@ class Usuario extends CI_Controller    {
             
             $retorno = $this->Usuario_model->getUsuario($email,$senha);
 
-            header('Content-Type: application/json; charset=utf-8', true,200);
+            
             if ($retorno != null){
+                header('Content-Type: application/json; charset=utf-8', true,200);
                 echo json_encode($retorno, JSON_PRETTY_PRINT);  
             }else{
+                header('Content-Type: application/json; charset=utf-8', false,400);
                 echo json_encode('Email ou senha inválidos!', JSON_PRETTY_PRINT);
             }
 
@@ -59,7 +61,7 @@ class Usuario extends CI_Controller    {
             $query = $this->Usuario_model->checkEmail($post->email);
 
             if(isset($query)){
-                header('Content-Type: application/json; charset=utf-8', true,200);
+                header('Content-Type: application/json; charset=utf-8', false,400);
                 echo json_encode("Email já registrado!", JSON_PRETTY_PRINT);    
                 exit;
             }
