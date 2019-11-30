@@ -58,3 +58,4 @@ $route['REST/Onibus/localizacaoBus/(:num)'] = 'REST/Onibus/localizacaoBus/id/$1'
 $route['REST/Noticias/(:num)'] = 'REST/Noticias/index/id/$1';
 $route['REST/Promocao/(:num)'] = 'REST/Promocao/index/id/$1';
 $route['REST/Onibus/(:num)'] = 'REST/Onibus/index/id/$1';
+$route['REST/Rotas/(:num)'] = 'REST/Rotas/index/id/$1';
