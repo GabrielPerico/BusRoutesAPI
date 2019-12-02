@@ -216,6 +216,13 @@ class Onibus extends Rest_Controller    {
             return;   
         }
     }
+
+    public function getAllOnibus_get(){
+        $this->load->model('Onibus_model');
+        $onibus = $this->Onibus_model->getAll();
+        $this->set_response($onibus, REST_Controller_Definitions::HTTP_OK);
+    }
+
     public function localizacaoBus_get(){
         if ($this->get('id')){
             $id = $this->get('id');
@@ -255,6 +262,7 @@ class Onibus extends Rest_Controller    {
             ], REST_Controller_Definitions::HTTP_BAD_REQUEST);
             return;  
         }else{
+            $id = $this->get('id');
             
             $this->load->model('Onibus_model');
             $retorno = $this->Onibus_model->getBusEmpresa($id);

@@ -53,10 +53,24 @@ class Rotas extends Rest_Controller
             $data['id_rota'] = $idRota;
             $this->Rotas_model->insertParadas($data);
         }
+        $this->set_renponse('ta d boassa', REST_Controller_Definitions::HTTP_OK);
+    }
 
+    public function rotasPerto_post()
+    {
+        $lat = $this->post('lat');
+        $lng = $this->post('lng');
+        $this->load->model('Rotas_model');
 
-        /**/
+        $query = $this->Rotas_model->getRotas($lat, $lng);
+        $this->set_response($query, REST_Controller_Definitions::HTTP_OK);
+    }
 
-        //$this->set_response($this->post()[1], REST_Controller_Definitions::HTTP_OK);
+    public function pegarRotas_get()
+    {
+        $id = $this->get('id');
+        $this->load->model('Rotas_model');
+        $query = $this->Rotas_model->getCaminhoRota($id);
+        $this->set_response($query, REST_Controller_Definitions::HTTP_OK);
     }
 }

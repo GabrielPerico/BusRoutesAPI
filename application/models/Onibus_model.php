@@ -17,6 +17,12 @@ class Onibus_model extends CI_Model{
         }
     }
 
+    public function getAll(){
+        $this->db->order_by('data_registro', 'desc');
+        $query = $this->db->get('onibus');
+        return $query->result();
+    }
+
     public function updateBus($id,$data = array())
     {
         if ($id > 0){
